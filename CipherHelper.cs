@@ -1,5 +1,5 @@
 ﻿namespace Lunacy.Encryption {
-    public class Class1 {
+    public static class CipherHelper {
 
     }
 }
