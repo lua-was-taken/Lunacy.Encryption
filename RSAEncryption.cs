@@ -16,7 +16,7 @@ namespace Lunacy.Encryption {
         }
 
         public static string Encrypt(in string data, in RSAKey key) {
-            return Convert.ToBase64String(Encrypt(Encoding.UTF8.GetBytes(data), key).Span);
+            return Encrypt(Encoding.UTF8.GetBytes(data), key).ToHex();
         }
 
         public static Memory<byte> Encrypt(in Memory<byte> blob, in RSAKey key) {
@@ -31,7 +31,7 @@ namespace Lunacy.Encryption {
         }
 
         public static string Decrypt(in string data, in RSAKey key) {
-            return Encoding.UTF8.GetString(Decrypt(Convert.FromBase64String(data), key).Span);
+            return Encoding.UTF8.GetString(Decrypt(data.GetBytesFromHex(), key).Span);
         }
 
         public static Memory<byte> Decrypt(in Memory<byte> blob, in RSAKey key) {
